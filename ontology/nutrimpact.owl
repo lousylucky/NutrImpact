@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:nutr="http://nutrimpact.org/ontologies/2025/v1/nutrimpact#"
+    xml:base="http://nutrimpact.org/ontologies/2025/v1/nutrimpact">
+
+    <owl:Ontology rdf:about="http://nutrimpact.org/ontologies/2025/v1/nutrimpact">
+        <rdfs:label xml:lang="fr">Ontologie NutrImpact</rdfs:label>
+        <rdfs:comment xml:lang="fr">Ontologie pour la modélisation des impacts environnementaux des fruits et légumes, intégrant les données de saisonnalité, les impacts CO2 et les indicateurs de qualité des données.</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:ID="Food">
+        <rdfs:label xml:lang="fr">Aliment</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Fruit">
+        <rdfs:subClassOf rdf:resource="#Food"/>
+        <rdfs:label xml:lang="fr">Fruit</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Vegetable">
+        <rdfs:subClassOf rdf:resource="#Food"/>
+        <rdfs:label xml:lang="fr">Légume</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="DayOfMonth">
+        <rdfs:label xml:lang="fr">Jour du Mois</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Data">
+        <rdfs:label xml:lang="fr">Donnée</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="EnvironmentalData">
+        <rdfs:subClassOf rdf:resource="#Data"/>
+        <rdfs:label xml:lang="fr">Donnée Environnementale</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="CO2ImpactData">
+        <rdfs:subClassOf rdf:resource="#EnvironmentalData"/>
+        <rdfs:label xml:lang="fr">Donnée d'Impact CO2</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Season">
+        <rdfs:label xml:lang="fr">Saison</rdfs:label>
+    </owl:Class>
+
+    <!-- Propriétés -->
+    <owl:DatatypeProperty rdf:ID="hasName">
+        <rdfs:domain rdf:resource="#Food"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="fr">a pour nom</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasCategory">
+        <rdfs:domain rdf:resource="#Food"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="fr">a pour catégorie</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasValue">
+        <rdfs:domain rdf:resource="#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label xml:lang="fr">a pour valeur</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasUnit">
+        <rdfs:domain rdf:resource="#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="fr">a pour unité</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasDescription">
+        <rdfs:domain rdf:resource="#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="fr">a pour description</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasDQR">
+        <rdfs:domain rdf:resource="#EnvironmentalData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label xml:lang="fr">a pour DQR</rdfs:label>
+        <rdfs:comment xml:lang="fr">Ce chiffre correspond au Data Quality Ratio (DQR), il indique le niveau de confiance que l'on peut avoir dans le score. Plus le DQR est proche de 1, plus la donnée est fiable ; plus la valeur se rapproche de 5, plus le score rend compte d'une incertitude importante. Une donnée avec un DQR >= 3 est considérée comme peu fiable.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:ID="hasMonth">
+        <rdfs:domain rdf:resource="#Season"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="fr">comprend le mois</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:ID="hasEnvironmentalData">
+        <rdfs:domain rdf:resource="#Food"/>
+        <rdfs:range rdf:resource="#EnvironmentalData"/>
+        <rdfs:label xml:lang="fr">a une donnée environnementale</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="hasCO2ImpactData">
+        <rdfs:domain rdf:resource="#Food"/>
+        <rdfs:range rdf:resource="#CO2ImpactData"/>
+        <rdfs:label xml:lang="fr">a une donnée d'impact CO2</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="isInSeasonDuring">
+        <rdfs:domain rdf:resource="#Food"/>
+        <rdfs:range rdf:resource="#Season"/>
+        <rdfs:label xml:lang="fr">est de saison pendant</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Instances -->
+    <nutr:apple rdf:type="nutr:Fruit">
+        <nutr:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pomme</nutr:hasName>
+        <nutr:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fruit</nutr:hasCategory>
+        <nutr:isInSeasonDuring rdf:resource="#autumn"/>
+        <nutr:hasCO2ImpactData rdf:resource="#apple_co2_impact"/>
+    </nutr:apple>
+
+    <nutr:autumn rdf:type="nutr:Season">
+        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Septembre</nutr:hasMonth>
+        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Octobre</nutr:hasMonth>
+        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Novembre</nutr:hasMonth>
+    </nutr:autumn>
+
+    <nutr:apple_co2_impact rdf:type="nutr:CO2ImpactData">
+        <nutr:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.408</nutr:hasValue>
+        <nutr:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kg CO2 eq/kg</nutr:hasUnit>
+        <nutr:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impact CO2 de la production de pommes</nutr:hasDescription>
+        <nutr:hasDQR rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.01</nutr:hasDQR>
+    </nutr:apple_co2_impact>
+</rdf:RDF>
