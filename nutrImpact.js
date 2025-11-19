@@ -3,12 +3,66 @@ import { parse } from "csv-parse/sync";
 
 const IMPACT_API_BASE = "https://impactco2.fr/api/v1";
 
-// Manual mapping between ImpactCO2 labels and Agribalyse IDs
-const agribalyseMapping = {
-    "Pomme": "12061",
-    "Pomme sèche": "13111",
-    // TODO: fill this map for all fruits & vegetables you need
-};
+let impactData = null;
+let agribalyseData = null;
+
+function findAgribalyse(label) {
+  const normalized = label.toLowerCase().trim();
+
+  // Helper: checks if the label contains "cru" or "crue"
+  const includesCru = (text) =>
+    text.includes("cru") || text.includes("crue");
+
+  // 1. Filter rows that start with the given product name
+  let candidates = agribalyseData.filter((row) => {
+    const rowLabel = String(row["Nom du Produit en Français"] || "").toLowerCase();
+    return rowLabel.startsWith(normalized);
+  });
+
+  // 2. Special rule: when searching for "pomme", exclude "pomme de terre"
+  if (normalized === "pomme") {
+    candidates = candidates.filter((row) => {
+      const rowLabel = String(row["Nom du Produit en Français"] || "").toLowerCase();
+      return !rowLabel.includes("de terre");
+    });
+  }
+
+  // If no results at all, return nothing
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  // 3. Prefer raw products ("cru" or "crue")
+  let cru = candidates.filter((row) => {
+    const rowLabel = String(row["Nom du Produit en Français"] || "").toLowerCase();
+    return includesCru(rowLabel);
+  });
+
+  // If exactly one match found → return it
+  if (cru.length === 1) {
+    return cru[0];
+  }
+
+  // If multiple raw versions exist
+  if (cru.length > 1) {
+    // 4. Among raw products, prefer those with "pulpe"
+    const pulpe = cru.filter((row) => {
+      const rowLabel = String(row["Nom du Produit en Français"] || "").toLowerCase();
+      return rowLabel.includes("pulpe");
+    });
+
+    // If pulpe variants exist → return the first one
+    if (pulpe.length >= 1) {
+      return pulpe[0];
+    }
+
+    // Otherwise return the first raw candidate
+    return cru[0];
+  }
+
+  // 5. Fallback: return the first candidate if nothing matches cru/crue
+  return candidates[0];
+}
 
 // 1) Fetch fruits & vegetables from Impact CO2
 async function fetchImpactAlimentation() {
@@ -26,32 +80,33 @@ async function fetchImpactAlimentation() {
     }
 
     const data = await res.json();
-    return data;
+    if (!data || !data.data) {
+        throw new Error("Invalid data from Impact CO2 API");
+    }
+    impactData = data.data;
+    return;
 }
 
 // 2) Load simplified Agribalyse CSV
 function loadAgribalyseSimplified(path) {
     const csv = fs.readFileSync(path, "utf8");
-    const records = parse(csv, {
+
+    agribalyseData = parse(csv, {
         columns: true,
-        skip_empty_lines: true,
+        bom: true,
     });
 
-    // Build index by Agribalyse ID (adapt column names!)
-    const byId = new Map();
-    for (const row of records) {
-        const id = row["AGRIBALYSE_ID"] || row["Code_AGB"]; // example column names
-        if (!id) continue;
-        byId.set(String(id).trim(), row);
+    if (!agribalyseData || agribalyseData.length === 0) {
+        throw new Error("Failed to load Agribalyse data");
     }
-
-    return byId;
+    return
 }
 
 // 3) Merge Impact CO2 data with Agribalyse
 async function buildMergedDataset() {
-    const impactData = await fetchImpactAlimentation();
-    const agribalyseById = loadAgribalyseSimplified("./agribalyse_simplifie.csv");
+
+    await fetchImpactAlimentation();
+    loadAgribalyseSimplified("./agribalyse.csv");
 
     // Adjust this depending on the real shape of impactData JSON
     const items = impactData.items || impactData; // TODO: adapt
@@ -59,27 +114,31 @@ async function buildMergedDataset() {
     const merged = [];
 
     for (const item of items) {
-        // Example: check that this is "Fruits et légumes" group
-        // You must adapt key names (group, theme, category, etc.)
-        if (item.theme !== "Fruits et légumes") continue;
 
-        const label = item.label_fr || item.name_fr || item.name;
-        const agribalyseId = agribalyseMapping[label];
+        const label = item.name;
+        const agribalyseItem = findAgribalyse(label);
+        if (!agribalyseItem) {
+            console.warn(`No Agribalyse match for: ${label}`);
+            continue;
+        }
+        console.log(agribalyseItem['Nom du Produit en Français'])
 
-        const agbRow = agribalyseId ? agribalyseById.get(agribalyseId) : null;
+        // TO DO 
+        // CHECKED UP TO THIS POINT 
+        // CONTINUE FROM HERE 
 
-        merged.push({
-            impact_id: item.id,
-            label_fr: label,
-            // adapt field name for CO2/kg from Impact CO2
-            co2e_kg: item.value || item.impact_kgco2e || null,
-            agribalyse_id: agribalyseId || null,
-            // adapt CSV column names for Score unique PEF & DQR
-            score_unique_pef: agbRow ? agbRow["SCORE_UNIQUE_PEF"] : null,
-            dqr: agbRow ? agbRow["DQR"] : null,
-        });
+        // merged.push({
+        //     impact_id: item.id,
+        //     label_fr: label,
+        //     // adapt field name for CO2/kg from Impact CO2
+        //     co2e_kg: item.value || item.impact_kgco2e || null,
+        //     agribalyse_id: agribalyseId || null,
+        //     // adapt CSV column names for Score unique PEF & DQR
+        //     score_unique_pef: agbRow ? agbRow["SCORE_UNIQUE_PEF"] : null,
+        //     dqr: agbRow ? agbRow["DQR"] : null,
+        // });
     }
-
+    console.log('done');
     return merged;
 }
 
