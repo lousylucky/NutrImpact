@@ -1,0 +1,23 @@
+{
+  "name": "nutrimpact",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/lousylucky/NutrImpact#readme",
+  "bugs": {
+    "url": "https://github.com/lousylucky/NutrImpact/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lousylucky/NutrImpact.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "nutrImpact.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0"
+  }
+}
