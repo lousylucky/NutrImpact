@@ -16,3 +16,9 @@ Comprend les données sur l'impact CO2 et d'autres données de l'impact environn
 - Agroportal : https://agroportal.lirmm.fr/
 
 Le foyer des ontologies et des artefacts sémantiques dans l'agroalimentaire et les domaines connexes.
+
+## BUT du projet
+
+Le but est de rassembler pour chaque fruit et légumes est d'afficher le CO2 dégager lors de la production du produit en ajouter les autres données de l'API impact gouv. Puis rassembler ces données avec les données d'Agribalyse qui permettent de savoir la répartition de cette consommation dans les différentes étapes du cycle de vie (transformation, emballage, transport...).
+
+Tout cela sera rendu disponible dans une base de données RDF, il faut donc créer une ontologie qui rassemble tout cela. Pour créer cette ontologie, il faut se renseigner sur Agroportal
