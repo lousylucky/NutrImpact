@@ -22,3 +22,15 @@ Le foyer des ontologies et des artefacts sémantiques dans l'agroalimentaire et 
 Le but est de rassembler pour chaque fruit et légumes est d'afficher le CO2 dégager lors de la production du produit en ajouter les autres données de l'API impact gouv. Puis rassembler ces données avec les données d'Agribalyse qui permettent de savoir la répartition de cette consommation dans les différentes étapes du cycle de vie (transformation, emballage, transport...).
 
 Tout cela sera rendu disponible dans une base de données RDF, il faut donc créer une ontologie qui rassemble tout cela. Pour créer cette ontologie, il faut se renseigner sur Agroportal
+
+### SPARQL Exemaple
+```
+PREFIX nutr: <http://nutrimpact.org/ontologies/2025/v1/nutrimpact#>
+
+SELECT ?data ?value ?unit
+WHERE {
+  nutr:pomme nutr:hasEnvironmentalData ?data .
+  ?data nutr:hasValue ?value ;
+        nutr:hasUnit ?unit .
+}
+```
