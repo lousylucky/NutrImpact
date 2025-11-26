@@ -172,21 +172,63 @@ function saveTurtle(merged) {
   const escapeLiteral = (str) =>
     String(str).replace(/"/g, '\\"');
 
+  // Définir les étapes de cycle de vie globales
+  const lifeCycleStages = [
+    { short: "agriculture", labelFr: "Agriculture" },
+    { short: "transformation", labelFr: "Transformation" },
+    { short: "emballage", labelFr: "Emballage" },
+    { short: "transport", labelFr: "Transport" },
+    { short: "supermarche", labelFr: "Supermarché et distribution" },
+    { short: "consommation", labelFr: "Consommation" },
+  ];
+
+  // Définir les mois globaux
+  const months = [
+    { short: "jan", labelFr: "Janvier" },
+    { short: "fev", labelFr: "Février" },
+    { short: "mar", labelFr: "Mars" },
+    { short: "avr", labelFr: "Avril" },
+    { short: "mai", labelFr: "Mai" },
+    { short: "jun", labelFr: "Juin" },
+    { short: "jul", labelFr: "Juillet" },
+    { short: "aou", labelFr: "Août" },
+    { short: "sep", labelFr: "Septembre" },
+    { short: "oct", labelFr: "Octobre" },
+    { short: "nov", labelFr: "Novembre" },
+    { short: "dec", labelFr: "Décembre" }
+  ];
+
+  // Créer les instances Month globales une seule fois
+  for (const month of months) {
+    ttl += `
+nutr:${month.short} a nutr:Month ;
+  nutr:hasMonthName "${month.short}"^^xsd:string ;
+  rdfs:label "${escapeLiteral(month.labelFr)}"@fr .
+`;
+  }
+
+  // Créer les étapes de cycle de vie globales une seule fois
+  for (const stage of lifeCycleStages) {
+    ttl += `
+nutr:${stage.short} a nutr:LifeCycleStage ;
+  rdfs:label "${escapeLiteral(stage.labelFr)}"@fr .
+`;
+  }
+
   for (const item of merged) {
     const foodId = slugify(item.label_fr || "food");
 
     const co2DataId = `${foodId}_co2`;
     const efGlobalId = `${foodId}_ef_global`;
-    const seasonId = `${foodId}_season`;
 
-    // etapy cyklu życia + dane per etap
-    const lifeCycleStages = [
-      { key: "ef_agriculture", short: "agriculture", labelFr: "Agriculture" },
-      { key: "ef_transformation", short: "transformation", labelFr: "Transformation" },
-      { key: "ef_emballage", short: "emballage", labelFr: "Emballage" },
-      { key: "ef_transport", short: "transport", labelFr: "Transport" },
-      { key: "ef_supermarche", short: "supermarche", labelFr: "Supermarché et distribution" },
-      { key: "ef_consommation", short: "consommation", labelFr: "Consommation" },
+    // Mapping des données vers les étapes de cycle de vie
+    const stageDataMapping = [
+      { key: "ef_agriculture", stage: "agriculture" },
+      { key: "ef_transformation", stage: "transformation" },
+      { key: "ef_emballage", stage: "emballage" },
+      { key: "ef_transport", stage: "transport" },
+      { key: "ef_supermarche", stage: "supermarche" },
+      { key: "ef_consommation", stage: "consommation" },
     ];
 
     const nameLiteral = escapeLiteral(item.label_fr || "");
@@ -222,33 +264,33 @@ function saveTurtle(merged) {
     }
 
     // dane EF per etap cyklu życia
-    for (const stage of lifeCycleStages) {
+    for (const stageMapping of stageDataMapping) {
       const val =
-        item[stage.key] != null && item[stage.key] !== ""
-          ? Number(item[stage.key])
+        item[stageMapping.key] != null && item[stageMapping.key] !== ""
+          ? Number(item[stageMapping.key])
           : NaN;
       if (!Number.isFinite(val)) continue;
 
-      const stageDataId = `${foodId}_${stage.short}_ef`;
+      const stageDataId = `${foodId}_${stageMapping.stage}_ef`;
       stageDataIds.push(stageDataId);
       envDataIds.push(stageDataId);
     }
 
-    // sezonowość z Impact CO2
-    let months = [];
+    // sezonowość z Impact CO2 - utiliser les instances Month
+    let monthsData = [];
     if (Array.isArray(item.months)) {
-      months = item.months;
+      monthsData = item.months;
     } else if (item.months && typeof item.months === "object") {
       // np. { jan: true, fev: false, ... }
-      months = Object.entries(item.months)
+      monthsData = Object.entries(item.months)
         .filter(([, v]) => v)
         .map(([k]) => k);
     }
-    const hasSeason = months.length > 0;
+    const hasSeason = monthsData.length > 0;
 
-    const monthLiterals = months
-      .map((m) => `"${escapeLiteral(String(m))}"^^xsd:string`)
-      .join(" , ");
+    const monthInstances = monthsData
+      .map((m) => `nutr:${String(m).toLowerCase()}`)
+      .join(", ");
 
     // --- instancja Food/Fruit/Vegetable ---
     ttl += `
@@ -265,20 +307,14 @@ nutr:${foodId} a nutr:${foodClass} ;
 
     if (hasSeason) {
       ttl += ` ;
-  nutr:isInSeasonDuring nutr:${seasonId}`;
+  nutr:isInSeasonDuring ${monthInstances}`;
     }
 
     ttl += ` .\n`;
 
-    // --- Season + months (Impact CO2) ---
-    if (hasSeason) {
-      ttl += `
-nutr:${seasonId} a nutr:Season ;
-  nutr:hasMonth ${monthLiterals} .
-`;
-    }
+    // --- Season + months (Impact CO2) - Plus besoin de créer de Season ---
 
-    // --- CO2 ECV jako EnvironmentalData ---
+    // --- CO2 ECV comme EnvironmentalData ---
     const dqr = item.dqr_global != null ? Number(item.dqr_global) : NaN;
 
     if (Number.isFinite(co2Val)) {
@@ -308,28 +344,25 @@ nutr:${efGlobalId} a nutr:EnvironmentalData ;
       ttl += ` .\n`;
     }
 
-    // --- LifeCycleStage + EnvironmentalData per etap ---
-    for (const stage of lifeCycleStages) {
+    // --- LifeCycleStage + LifeCycleEnvData per etap (utilise les stages globaux) ---
+    for (const stageMapping of stageDataMapping) {
       const val =
-        item[stage.key] != null && item[stage.key] !== ""
-          ? Number(item[stage.key])
+        item[stageMapping.key] != null && item[stageMapping.key] !== ""
+          ? Number(item[stageMapping.key])
           : NaN;
       if (!Number.isFinite(val)) continue;
 
-      const stageId = `${foodId}_stage_${stage.short}`;
-      const stageDataId = `${foodId}_${stage.short}_ef`;
+      const stageDataId = `${foodId}_${stageMapping.stage}_ef`;
+      const stageLabel = lifeCycleStages.find(s => s.short === stageMapping.stage).labelFr;
 
       ttl += `
-nutr:${stageId} a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "${escapeLiteral(stage.labelFr)}"@fr .
-
-nutr:${stageDataId} a nutr:EnvironmentalData ;
+nutr:${stageDataId} a nutr:LifeCycleEnvData ;
   nutr:hasValue "${val}"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - ${escapeLiteral(
-    stage.labelFr
+    stageLabel
   )} (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:${stageId}`;
+  nutr:hasLifeCycleStage nutr:${stageMapping.stage}`;
       if (Number.isFinite(dqr)) {
         ttl += ` ;
   nutr:hasDQR "${dqr}"^^xsd:float`;

@@ -3,14 +3,77 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 
+nutr:jan a nutr:Month ;
+  nutr:hasMonthName "jan"^^xsd:string ;
+  rdfs:label "Janvier"@fr .
+
+nutr:fev a nutr:Month ;
+  nutr:hasMonthName "fev"^^xsd:string ;
+  rdfs:label "Février"@fr .
+
+nutr:mar a nutr:Month ;
+  nutr:hasMonthName "mar"^^xsd:string ;
+  rdfs:label "Mars"@fr .
+
+nutr:avr a nutr:Month ;
+  nutr:hasMonthName "avr"^^xsd:string ;
+  rdfs:label "Avril"@fr .
+
+nutr:mai a nutr:Month ;
+  nutr:hasMonthName "mai"^^xsd:string ;
+  rdfs:label "Mai"@fr .
+
+nutr:jun a nutr:Month ;
+  nutr:hasMonthName "jun"^^xsd:string ;
+  rdfs:label "Juin"@fr .
+
+nutr:jul a nutr:Month ;
+  nutr:hasMonthName "jul"^^xsd:string ;
+  rdfs:label "Juillet"@fr .
+
+nutr:aou a nutr:Month ;
+  nutr:hasMonthName "aou"^^xsd:string ;
+  rdfs:label "Août"@fr .
+
+nutr:sep a nutr:Month ;
+  nutr:hasMonthName "sep"^^xsd:string ;
+  rdfs:label "Septembre"@fr .
+
+nutr:oct a nutr:Month ;
+  nutr:hasMonthName "oct"^^xsd:string ;
+  rdfs:label "Octobre"@fr .
+
+nutr:nov a nutr:Month ;
+  nutr:hasMonthName "nov"^^xsd:string ;
+  rdfs:label "Novembre"@fr .
+
+nutr:dec a nutr:Month ;
+  nutr:hasMonthName "dec"^^xsd:string ;
+  rdfs:label "Décembre"@fr .
+
+nutr:agriculture a nutr:LifeCycleStage ;
+  rdfs:label "Agriculture"@fr .
+
+nutr:transformation a nutr:LifeCycleStage ;
+  rdfs:label "Transformation"@fr .
+
+nutr:emballage a nutr:LifeCycleStage ;
+  rdfs:label "Emballage"@fr .
+
+nutr:transport a nutr:LifeCycleStage ;
+  rdfs:label "Transport"@fr .
+
+nutr:supermarche a nutr:LifeCycleStage ;
+  rdfs:label "Supermarché et distribution"@fr .
+
+nutr:consommation a nutr:LifeCycleStage ;
+  rdfs:label "Consommation"@fr .
+
 nutr:pomme a nutr:Fruit ;
   nutr:hasName "Pomme"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:pomme_co2, nutr:pomme_ef_global, nutr:pomme_agriculture_ef, nutr:pomme_transformation_ef, nutr:pomme_emballage_ef, nutr:pomme_transport_ef, nutr:pomme_supermarche_ef, nutr:pomme_consommation_ef ;
-  nutr:isInSeasonDuring nutr:pomme_season .
-
-nutr:pomme_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:pomme_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.40819489999999997"^^xsd:float ;
@@ -24,64 +87,46 @@ nutr:pomme_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:pomme_agriculture_ef a nutr:EnvironmentalData ;
+nutr:pomme_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0193"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:pomme_transformation_ef a nutr:EnvironmentalData ;
+nutr:pomme_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000287"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:pomme_emballage_ef a nutr:EnvironmentalData ;
+nutr:pomme_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:pomme_transport_ef a nutr:EnvironmentalData ;
+nutr:pomme_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:pomme_supermarche_ef a nutr:EnvironmentalData ;
+nutr:pomme_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00372"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:pomme_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:pomme_consommation_ef a nutr:EnvironmentalData ;
+nutr:pomme_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:pomme_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:pomme_ef_global nutr:hasLifeCycleData nutr:pomme_agriculture_ef, nutr:pomme_transformation_ef, nutr:pomme_emballage_ef, nutr:pomme_transport_ef, nutr:pomme_supermarche_ef, nutr:pomme_consommation_ef .
@@ -90,10 +135,7 @@ nutr:ail a nutr:Food ;
   nutr:hasName "Ail"@fr ;
   nutr:hasCategory "herbes" ;
   nutr:hasEnvironmentalData nutr:ail_co2, nutr:ail_ef_global, nutr:ail_agriculture_ef, nutr:ail_transformation_ef, nutr:ail_emballage_ef, nutr:ail_transport_ef, nutr:ail_supermarche_ef, nutr:ail_consommation_ef ;
-  nutr:isInSeasonDuring nutr:ail_season .
-
-nutr:ail_season a nutr:Season ;
-  nutr:hasMonth "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:ail_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.38349300000000003"^^xsd:float ;
@@ -107,64 +149,46 @@ nutr:ail_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:ail_agriculture_ef a nutr:EnvironmentalData ;
+nutr:ail_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0212"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:ail_transformation_ef a nutr:EnvironmentalData ;
+nutr:ail_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000584"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:ail_emballage_ef a nutr:EnvironmentalData ;
+nutr:ail_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:ail_transport_ef a nutr:EnvironmentalData ;
+nutr:ail_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0154"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:ail_supermarche_ef a nutr:EnvironmentalData ;
+nutr:ail_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00571"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ail_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:ail_consommation_ef a nutr:EnvironmentalData ;
+nutr:ail_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ail_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:ail_ef_global nutr:hasLifeCycleData nutr:ail_agriculture_ef, nutr:ail_transformation_ef, nutr:ail_emballage_ef, nutr:ail_transport_ef, nutr:ail_supermarche_ef, nutr:ail_consommation_ef .
@@ -173,10 +197,7 @@ nutr:betterave a nutr:Vegetable ;
   nutr:hasName "Betterave"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:betterave_co2, nutr:betterave_ef_global, nutr:betterave_agriculture_ef, nutr:betterave_transformation_ef, nutr:betterave_emballage_ef, nutr:betterave_transport_ef, nutr:betterave_supermarche_ef, nutr:betterave_consommation_ef ;
-  nutr:isInSeasonDuring nutr:betterave_season .
-
-nutr:betterave_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:10, nutr:11, nutr:12 .
 
 nutr:betterave_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.40736649999999996"^^xsd:float ;
@@ -190,64 +211,46 @@ nutr:betterave_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:betterave_agriculture_ef a nutr:EnvironmentalData ;
+nutr:betterave_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0137"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:betterave_transformation_ef a nutr:EnvironmentalData ;
+nutr:betterave_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000201"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:betterave_emballage_ef a nutr:EnvironmentalData ;
+nutr:betterave_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:betterave_transport_ef a nutr:EnvironmentalData ;
+nutr:betterave_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:betterave_supermarche_ef a nutr:EnvironmentalData ;
+nutr:betterave_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00288"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:betterave_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:betterave_consommation_ef a nutr:EnvironmentalData ;
+nutr:betterave_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:betterave_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:betterave_ef_global nutr:hasLifeCycleData nutr:betterave_agriculture_ef, nutr:betterave_transformation_ef, nutr:betterave_emballage_ef, nutr:betterave_transport_ef, nutr:betterave_supermarche_ef, nutr:betterave_consommation_ef .
@@ -256,10 +259,7 @@ nutr:carotte a nutr:Vegetable ;
   nutr:hasName "Carotte"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:carotte_co2, nutr:carotte_ef_global, nutr:carotte_agriculture_ef, nutr:carotte_transformation_ef, nutr:carotte_emballage_ef, nutr:carotte_transport_ef, nutr:carotte_supermarche_ef, nutr:carotte_consommation_ef ;
-  nutr:isInSeasonDuring nutr:carotte_season .
-
-nutr:carotte_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:carotte_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.3960665"^^xsd:float ;
@@ -273,64 +273,46 @@ nutr:carotte_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:carotte_agriculture_ef a nutr:EnvironmentalData ;
+nutr:carotte_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0214"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:carotte_transformation_ef a nutr:EnvironmentalData ;
+nutr:carotte_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000201"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:carotte_emballage_ef a nutr:EnvironmentalData ;
+nutr:carotte_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:carotte_transport_ef a nutr:EnvironmentalData ;
+nutr:carotte_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:carotte_supermarche_ef a nutr:EnvironmentalData ;
+nutr:carotte_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00288"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:carotte_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:carotte_consommation_ef a nutr:EnvironmentalData ;
+nutr:carotte_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carotte_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:carotte_ef_global nutr:hasLifeCycleData nutr:carotte_agriculture_ef, nutr:carotte_transformation_ef, nutr:carotte_emballage_ef, nutr:carotte_transport_ef, nutr:carotte_supermarche_ef, nutr:carotte_consommation_ef .
@@ -339,10 +321,7 @@ nutr:celeri a nutr:Vegetable ;
   nutr:hasName "Céleri"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:celeri_co2, nutr:celeri_ef_global, nutr:celeri_agriculture_ef, nutr:celeri_transformation_ef, nutr:celeri_emballage_ef, nutr:celeri_transport_ef, nutr:celeri_supermarche_ef, nutr:celeri_consommation_ef ;
-  nutr:isInSeasonDuring nutr:celeri_season .
-
-nutr:celeri_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:10, nutr:11, nutr:12 .
 
 nutr:celeri_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.7157324"^^xsd:float ;
@@ -356,64 +335,46 @@ nutr:celeri_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:celeri_agriculture_ef a nutr:EnvironmentalData ;
+nutr:celeri_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0486"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:celeri_transformation_ef a nutr:EnvironmentalData ;
+nutr:celeri_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000189"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:celeri_emballage_ef a nutr:EnvironmentalData ;
+nutr:celeri_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:celeri_transport_ef a nutr:EnvironmentalData ;
+nutr:celeri_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0184"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:celeri_supermarche_ef a nutr:EnvironmentalData ;
+nutr:celeri_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0027"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:celeri_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:celeri_consommation_ef a nutr:EnvironmentalData ;
+nutr:celeri_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000407"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:celeri_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:celeri_ef_global nutr:hasLifeCycleData nutr:celeri_agriculture_ef, nutr:celeri_transformation_ef, nutr:celeri_emballage_ef, nutr:celeri_transport_ef, nutr:celeri_supermarche_ef, nutr:celeri_consommation_ef .
@@ -422,10 +383,7 @@ nutr:chou a nutr:Vegetable ;
   nutr:hasName "Chou"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:chou_co2, nutr:chou_ef_global, nutr:chou_agriculture_ef, nutr:chou_transformation_ef, nutr:chou_emballage_ef, nutr:chou_transport_ef, nutr:chou_supermarche_ef, nutr:chou_consommation_ef ;
-  nutr:isInSeasonDuring nutr:chou_season .
-
-nutr:chou_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:10, nutr:11, nutr:12 .
 
 nutr:chou_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.8476329999999999"^^xsd:float ;
@@ -439,64 +397,46 @@ nutr:chou_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:chou_agriculture_ef a nutr:EnvironmentalData ;
+nutr:chou_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0402"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:chou_transformation_ef a nutr:EnvironmentalData ;
+nutr:chou_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:chou_emballage_ef a nutr:EnvironmentalData ;
+nutr:chou_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:chou_transport_ef a nutr:EnvironmentalData ;
+nutr:chou_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:chou_supermarche_ef a nutr:EnvironmentalData ;
+nutr:chou_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00501"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:chou_consommation_ef a nutr:EnvironmentalData ;
+nutr:chou_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:chou_ef_global nutr:hasLifeCycleData nutr:chou_agriculture_ef, nutr:chou_transformation_ef, nutr:chou_emballage_ef, nutr:chou_transport_ef, nutr:chou_supermarche_ef, nutr:chou_consommation_ef .
@@ -505,10 +445,7 @@ nutr:chou_de_bruxelles a nutr:Vegetable ;
   nutr:hasName "Chou de Bruxelles"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:chou_de_bruxelles_co2, nutr:chou_de_bruxelles_ef_global, nutr:chou_de_bruxelles_agriculture_ef, nutr:chou_de_bruxelles_transformation_ef, nutr:chou_de_bruxelles_emballage_ef, nutr:chou_de_bruxelles_transport_ef, nutr:chou_de_bruxelles_supermarche_ef, nutr:chou_de_bruxelles_consommation_ef ;
-  nutr:isInSeasonDuring nutr:chou_de_bruxelles_season .
-
-nutr:chou_de_bruxelles_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:10, nutr:11, nutr:12 .
 
 nutr:chou_de_bruxelles_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.562147"^^xsd:float ;
@@ -522,64 +459,46 @@ nutr:chou_de_bruxelles_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:chou_de_bruxelles_agriculture_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0384"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:chou_de_bruxelles_transformation_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000355"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:chou_de_bruxelles_emballage_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:chou_de_bruxelles_transport_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:chou_de_bruxelles_supermarche_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00437"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chou_de_bruxelles_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:chou_de_bruxelles_consommation_ef a nutr:EnvironmentalData ;
+nutr:chou_de_bruxelles_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000456"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_de_bruxelles_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:chou_de_bruxelles_ef_global nutr:hasLifeCycleData nutr:chou_de_bruxelles_agriculture_ef, nutr:chou_de_bruxelles_transformation_ef, nutr:chou_de_bruxelles_emballage_ef, nutr:chou_de_bruxelles_transport_ef, nutr:chou_de_bruxelles_supermarche_ef, nutr:chou_de_bruxelles_consommation_ef .
@@ -588,10 +507,7 @@ nutr:chou_fleur a nutr:Vegetable ;
   nutr:hasName "Chou-fleur"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:chou_fleur_co2, nutr:chou_fleur_ef_global, nutr:chou_fleur_agriculture_ef, nutr:chou_fleur_transformation_ef, nutr:chou_fleur_emballage_ef, nutr:chou_fleur_transport_ef, nutr:chou_fleur_supermarche_ef, nutr:chou_fleur_consommation_ef ;
-  nutr:isInSeasonDuring nutr:chou_fleur_season .
-
-nutr:chou_fleur_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:chou_fleur_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.720705"^^xsd:float ;
@@ -605,64 +521,46 @@ nutr:chou_fleur_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:chou_fleur_agriculture_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0437"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:chou_fleur_transformation_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000062"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:chou_fleur_emballage_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:chou_fleur_transport_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:chou_fleur_supermarche_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00706"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:chou_fleur_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:chou_fleur_consommation_ef a nutr:EnvironmentalData ;
+nutr:chou_fleur_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chou_fleur_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:chou_fleur_ef_global nutr:hasLifeCycleData nutr:chou_fleur_agriculture_ef, nutr:chou_fleur_transformation_ef, nutr:chou_fleur_emballage_ef, nutr:chou_fleur_transport_ef, nutr:chou_fleur_supermarche_ef, nutr:chou_fleur_consommation_ef .
@@ -671,10 +569,7 @@ nutr:courge a nutr:Vegetable ;
   nutr:hasName "Courge"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:courge_co2, nutr:courge_ef_global, nutr:courge_agriculture_ef, nutr:courge_transformation_ef, nutr:courge_emballage_ef, nutr:courge_transport_ef, nutr:courge_supermarche_ef, nutr:courge_consommation_ef ;
-  nutr:isInSeasonDuring nutr:courge_season .
-
-nutr:courge_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:courge_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.6382"^^xsd:float ;
@@ -688,64 +583,46 @@ nutr:courge_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:courge_agriculture_ef a nutr:EnvironmentalData ;
+nutr:courge_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0334"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:courge_transformation_ef a nutr:EnvironmentalData ;
+nutr:courge_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:courge_emballage_ef a nutr:EnvironmentalData ;
+nutr:courge_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:courge_transport_ef a nutr:EnvironmentalData ;
+nutr:courge_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0247"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:courge_supermarche_ef a nutr:EnvironmentalData ;
+nutr:courge_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00501"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:courge_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:courge_consommation_ef a nutr:EnvironmentalData ;
+nutr:courge_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:courge_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:courge_ef_global nutr:hasLifeCycleData nutr:courge_agriculture_ef, nutr:courge_transformation_ef, nutr:courge_emballage_ef, nutr:courge_transport_ef, nutr:courge_supermarche_ef, nutr:courge_consommation_ef .
@@ -754,10 +631,7 @@ nutr:cresson a nutr:Vegetable ;
   nutr:hasName "Cresson"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:cresson_co2, nutr:cresson_ef_global, nutr:cresson_agriculture_ef, nutr:cresson_transformation_ef, nutr:cresson_emballage_ef, nutr:cresson_transport_ef, nutr:cresson_supermarche_ef, nutr:cresson_consommation_ef ;
-  nutr:isInSeasonDuring nutr:cresson_season .
-
-nutr:cresson_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:cresson_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.868145"^^xsd:float ;
@@ -771,64 +645,46 @@ nutr:cresson_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:cresson_agriculture_ef a nutr:EnvironmentalData ;
+nutr:cresson_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0378"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:cresson_transformation_ef a nutr:EnvironmentalData ;
+nutr:cresson_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000165"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:cresson_emballage_ef a nutr:EnvironmentalData ;
+nutr:cresson_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:cresson_transport_ef a nutr:EnvironmentalData ;
+nutr:cresson_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0297"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:cresson_supermarche_ef a nutr:EnvironmentalData ;
+nutr:cresson_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0174"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:cresson_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:cresson_consommation_ef a nutr:EnvironmentalData ;
+nutr:cresson_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00878"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:cresson_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:cresson_ef_global nutr:hasLifeCycleData nutr:cresson_agriculture_ef, nutr:cresson_transformation_ef, nutr:cresson_emballage_ef, nutr:cresson_transport_ef, nutr:cresson_supermarche_ef, nutr:cresson_consommation_ef .
@@ -837,10 +693,7 @@ nutr:echalote a nutr:Vegetable ;
   nutr:hasName "Échalote"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:echalote_co2, nutr:echalote_ef_global, nutr:echalote_agriculture_ef, nutr:echalote_transformation_ef, nutr:echalote_emballage_ef, nutr:echalote_transport_ef, nutr:echalote_supermarche_ef, nutr:echalote_consommation_ef ;
-  nutr:isInSeasonDuring nutr:echalote_season .
-
-nutr:echalote_season a nutr:Season ;
-  nutr:hasMonth "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:10, nutr:11, nutr:12 .
 
 nutr:echalote_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.3935757"^^xsd:float ;
@@ -854,64 +707,46 @@ nutr:echalote_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:echalote_agriculture_ef a nutr:EnvironmentalData ;
+nutr:echalote_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0205"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:echalote_transformation_ef a nutr:EnvironmentalData ;
+nutr:echalote_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000229"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:echalote_emballage_ef a nutr:EnvironmentalData ;
+nutr:echalote_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:echalote_transport_ef a nutr:EnvironmentalData ;
+nutr:echalote_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:echalote_supermarche_ef a nutr:EnvironmentalData ;
+nutr:echalote_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00287"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:echalote_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:echalote_consommation_ef a nutr:EnvironmentalData ;
+nutr:echalote_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:echalote_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:echalote_ef_global nutr:hasLifeCycleData nutr:echalote_agriculture_ef, nutr:echalote_transformation_ef, nutr:echalote_emballage_ef, nutr:echalote_transport_ef, nutr:echalote_supermarche_ef, nutr:echalote_consommation_ef .
@@ -920,10 +755,7 @@ nutr:epinard a nutr:Vegetable ;
   nutr:hasName "Épinard"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:epinard_co2, nutr:epinard_ef_global, nutr:epinard_agriculture_ef, nutr:epinard_transformation_ef, nutr:epinard_emballage_ef, nutr:epinard_transport_ef, nutr:epinard_supermarche_ef, nutr:epinard_consommation_ef ;
-  nutr:isInSeasonDuring nutr:epinard_season .
-
-nutr:epinard_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:epinard_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.42256999999999995"^^xsd:float ;
@@ -937,64 +769,46 @@ nutr:epinard_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:epinard_agriculture_ef a nutr:EnvironmentalData ;
+nutr:epinard_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0168"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:epinard_transformation_ef a nutr:EnvironmentalData ;
+nutr:epinard_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:epinard_emballage_ef a nutr:EnvironmentalData ;
+nutr:epinard_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:epinard_transport_ef a nutr:EnvironmentalData ;
+nutr:epinard_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0184"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:epinard_supermarche_ef a nutr:EnvironmentalData ;
+nutr:epinard_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0109"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:epinard_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:epinard_consommation_ef a nutr:EnvironmentalData ;
+nutr:epinard_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000407"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:epinard_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:epinard_ef_global nutr:hasLifeCycleData nutr:epinard_agriculture_ef, nutr:epinard_transformation_ef, nutr:epinard_emballage_ef, nutr:epinard_transport_ef, nutr:epinard_supermarche_ef, nutr:epinard_consommation_ef .
@@ -1003,10 +817,7 @@ nutr:fenouil a nutr:Vegetable ;
   nutr:hasName "Fenouil"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:fenouil_co2, nutr:fenouil_ef_global, nutr:fenouil_agriculture_ef, nutr:fenouil_transformation_ef, nutr:fenouil_emballage_ef, nutr:fenouil_transport_ef, nutr:fenouil_supermarche_ef, nutr:fenouil_consommation_ef ;
-  nutr:isInSeasonDuring nutr:fenouil_season .
-
-nutr:fenouil_season a nutr:Season ;
-  nutr:hasMonth "4"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string .
+  nutr:isInSeasonDuring nutr:4, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11 .
 
 nutr:fenouil_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.018233"^^xsd:float ;
@@ -1020,64 +831,46 @@ nutr:fenouil_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:fenouil_agriculture_ef a nutr:EnvironmentalData ;
+nutr:fenouil_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0701"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:fenouil_transformation_ef a nutr:EnvironmentalData ;
+nutr:fenouil_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000403"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:fenouil_emballage_ef a nutr:EnvironmentalData ;
+nutr:fenouil_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:fenouil_transport_ef a nutr:EnvironmentalData ;
+nutr:fenouil_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0346"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:fenouil_supermarche_ef a nutr:EnvironmentalData ;
+nutr:fenouil_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00496"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fenouil_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:fenouil_consommation_ef a nutr:EnvironmentalData ;
+nutr:fenouil_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fenouil_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:fenouil_ef_global nutr:hasLifeCycleData nutr:fenouil_agriculture_ef, nutr:fenouil_transformation_ef, nutr:fenouil_emballage_ef, nutr:fenouil_transport_ef, nutr:fenouil_supermarche_ef, nutr:fenouil_consommation_ef .
@@ -1086,10 +879,7 @@ nutr:mache a nutr:Vegetable ;
   nutr:hasName "Mâche"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:mache_co2, nutr:mache_ef_global, nutr:mache_agriculture_ef, nutr:mache_transformation_ef, nutr:mache_emballage_ef, nutr:mache_transport_ef, nutr:mache_supermarche_ef, nutr:mache_consommation_ef ;
-  nutr:isInSeasonDuring nutr:mache_season .
-
-nutr:mache_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:10, nutr:11, nutr:12 .
 
 nutr:mache_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.868145"^^xsd:float ;
@@ -1103,64 +893,46 @@ nutr:mache_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:mache_agriculture_ef a nutr:EnvironmentalData ;
+nutr:mache_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0378"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:mache_transformation_ef a nutr:EnvironmentalData ;
+nutr:mache_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000165"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:mache_emballage_ef a nutr:EnvironmentalData ;
+nutr:mache_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:mache_transport_ef a nutr:EnvironmentalData ;
+nutr:mache_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0297"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:mache_supermarche_ef a nutr:EnvironmentalData ;
+nutr:mache_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0174"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mache_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:mache_consommation_ef a nutr:EnvironmentalData ;
+nutr:mache_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00878"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mache_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:mache_ef_global nutr:hasLifeCycleData nutr:mache_agriculture_ef, nutr:mache_transformation_ef, nutr:mache_emballage_ef, nutr:mache_transport_ef, nutr:mache_supermarche_ef, nutr:mache_consommation_ef .
@@ -1169,10 +941,7 @@ nutr:navet a nutr:Vegetable ;
   nutr:hasName "Navet"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:navet_co2, nutr:navet_ef_global, nutr:navet_agriculture_ef, nutr:navet_transformation_ef, nutr:navet_emballage_ef, nutr:navet_transport_ef, nutr:navet_supermarche_ef, nutr:navet_consommation_ef ;
-  nutr:isInSeasonDuring nutr:navet_season .
-
-nutr:navet_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:10, nutr:11, nutr:12 .
 
 nutr:navet_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.3961"^^xsd:float ;
@@ -1186,64 +955,46 @@ nutr:navet_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:navet_agriculture_ef a nutr:EnvironmentalData ;
+nutr:navet_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0214"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:navet_transformation_ef a nutr:EnvironmentalData ;
+nutr:navet_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:navet_emballage_ef a nutr:EnvironmentalData ;
+nutr:navet_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:navet_transport_ef a nutr:EnvironmentalData ;
+nutr:navet_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0196"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:navet_supermarche_ef a nutr:EnvironmentalData ;
+nutr:navet_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00291"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:navet_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:navet_consommation_ef a nutr:EnvironmentalData ;
+nutr:navet_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:navet_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:navet_ef_global nutr:hasLifeCycleData nutr:navet_agriculture_ef, nutr:navet_transformation_ef, nutr:navet_emballage_ef, nutr:navet_transport_ef, nutr:navet_supermarche_ef, nutr:navet_consommation_ef .
@@ -1252,10 +1003,7 @@ nutr:oignon a nutr:Vegetable ;
   nutr:hasName "Oignon"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:oignon_co2, nutr:oignon_ef_global, nutr:oignon_agriculture_ef, nutr:oignon_transformation_ef, nutr:oignon_emballage_ef, nutr:oignon_transport_ef, nutr:oignon_supermarche_ef, nutr:oignon_consommation_ef ;
-  nutr:isInSeasonDuring nutr:oignon_season .
-
-nutr:oignon_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:oignon_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.4204685"^^xsd:float ;
@@ -1269,64 +1017,46 @@ nutr:oignon_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:oignon_agriculture_ef a nutr:EnvironmentalData ;
+nutr:oignon_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0242"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:oignon_transformation_ef a nutr:EnvironmentalData ;
+nutr:oignon_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000207"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:oignon_emballage_ef a nutr:EnvironmentalData ;
+nutr:oignon_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:oignon_transport_ef a nutr:EnvironmentalData ;
+nutr:oignon_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0202"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:oignon_supermarche_ef a nutr:EnvironmentalData ;
+nutr:oignon_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00294"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:oignon_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:oignon_consommation_ef a nutr:EnvironmentalData ;
+nutr:oignon_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:oignon_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:oignon_ef_global nutr:hasLifeCycleData nutr:oignon_agriculture_ef, nutr:oignon_transformation_ef, nutr:oignon_emballage_ef, nutr:oignon_transport_ef, nutr:oignon_supermarche_ef, nutr:oignon_consommation_ef .
@@ -1335,10 +1065,7 @@ nutr:panais a nutr:Vegetable ;
   nutr:hasName "Panais"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:panais_co2, nutr:panais_ef_global, nutr:panais_agriculture_ef, nutr:panais_transformation_ef, nutr:panais_emballage_ef, nutr:panais_transport_ef, nutr:panais_supermarche_ef, nutr:panais_consommation_ef ;
-  nutr:isInSeasonDuring nutr:panais_season .
-
-nutr:panais_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:10, nutr:11, nutr:12 .
 
 nutr:panais_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.4942756"^^xsd:float ;
@@ -1352,64 +1079,46 @@ nutr:panais_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:panais_agriculture_ef a nutr:EnvironmentalData ;
+nutr:panais_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0244"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:panais_transformation_ef a nutr:EnvironmentalData ;
+nutr:panais_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000229"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:panais_emballage_ef a nutr:EnvironmentalData ;
+nutr:panais_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:panais_transport_ef a nutr:EnvironmentalData ;
+nutr:panais_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:panais_supermarche_ef a nutr:EnvironmentalData ;
+nutr:panais_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00328"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:panais_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:panais_consommation_ef a nutr:EnvironmentalData ;
+nutr:panais_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:panais_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:panais_ef_global nutr:hasLifeCycleData nutr:panais_agriculture_ef, nutr:panais_transformation_ef, nutr:panais_emballage_ef, nutr:panais_transport_ef, nutr:panais_supermarche_ef, nutr:panais_consommation_ef .
@@ -1418,10 +1127,7 @@ nutr:poireau a nutr:Vegetable ;
   nutr:hasName "Poireau"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:poireau_co2, nutr:poireau_ef_global, nutr:poireau_agriculture_ef, nutr:poireau_transformation_ef, nutr:poireau_emballage_ef, nutr:poireau_transport_ef, nutr:poireau_supermarche_ef, nutr:poireau_consommation_ef ;
-  nutr:isInSeasonDuring nutr:poireau_season .
-
-nutr:poireau_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:poireau_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.6113778000000001"^^xsd:float ;
@@ -1435,64 +1141,46 @@ nutr:poireau_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:poireau_agriculture_ef a nutr:EnvironmentalData ;
+nutr:poireau_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0382"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:poireau_transformation_ef a nutr:EnvironmentalData ;
+nutr:poireau_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000236"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:poireau_emballage_ef a nutr:EnvironmentalData ;
+nutr:poireau_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:poireau_transport_ef a nutr:EnvironmentalData ;
+nutr:poireau_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:poireau_supermarche_ef a nutr:EnvironmentalData ;
+nutr:poireau_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00334"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poireau_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:poireau_consommation_ef a nutr:EnvironmentalData ;
+nutr:poireau_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poireau_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:poireau_ef_global nutr:hasLifeCycleData nutr:poireau_agriculture_ef, nutr:poireau_transformation_ef, nutr:poireau_emballage_ef, nutr:poireau_transport_ef, nutr:poireau_supermarche_ef, nutr:poireau_consommation_ef .
@@ -1501,10 +1189,7 @@ nutr:potiron a nutr:Vegetable ;
   nutr:hasName "Potiron"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:potiron_co2, nutr:potiron_ef_global, nutr:potiron_agriculture_ef, nutr:potiron_transformation_ef, nutr:potiron_emballage_ef, nutr:potiron_transport_ef, nutr:potiron_supermarche_ef, nutr:potiron_consommation_ef ;
-  nutr:isInSeasonDuring nutr:potiron_season .
-
-nutr:potiron_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:potiron_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.6382329999999999"^^xsd:float ;
@@ -1518,64 +1203,46 @@ nutr:potiron_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:potiron_agriculture_ef a nutr:EnvironmentalData ;
+nutr:potiron_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0334"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:potiron_transformation_ef a nutr:EnvironmentalData ;
+nutr:potiron_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000403"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:potiron_emballage_ef a nutr:EnvironmentalData ;
+nutr:potiron_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:potiron_transport_ef a nutr:EnvironmentalData ;
+nutr:potiron_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0247"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:potiron_supermarche_ef a nutr:EnvironmentalData ;
+nutr:potiron_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00496"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:potiron_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:potiron_consommation_ef a nutr:EnvironmentalData ;
+nutr:potiron_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:potiron_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:potiron_ef_global nutr:hasLifeCycleData nutr:potiron_agriculture_ef, nutr:potiron_transformation_ef, nutr:potiron_emballage_ef, nutr:potiron_transport_ef, nutr:potiron_supermarche_ef, nutr:potiron_consommation_ef .
@@ -1584,10 +1251,7 @@ nutr:salsifis a nutr:Vegetable ;
   nutr:hasName "Salsifis"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:salsifis_co2, nutr:salsifis_ef_global, nutr:salsifis_agriculture_ef, nutr:salsifis_transformation_ef, nutr:salsifis_emballage_ef, nutr:salsifis_transport_ef, nutr:salsifis_supermarche_ef, nutr:salsifis_consommation_ef ;
-  nutr:isInSeasonDuring nutr:salsifis_season .
-
-nutr:salsifis_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:11, nutr:12 .
 
 nutr:salsifis_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.4942756"^^xsd:float ;
@@ -1601,64 +1265,46 @@ nutr:salsifis_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:salsifis_agriculture_ef a nutr:EnvironmentalData ;
+nutr:salsifis_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0244"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:salsifis_transformation_ef a nutr:EnvironmentalData ;
+nutr:salsifis_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000229"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:salsifis_emballage_ef a nutr:EnvironmentalData ;
+nutr:salsifis_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:salsifis_transport_ef a nutr:EnvironmentalData ;
+nutr:salsifis_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:salsifis_supermarche_ef a nutr:EnvironmentalData ;
+nutr:salsifis_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00328"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:salsifis_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:salsifis_consommation_ef a nutr:EnvironmentalData ;
+nutr:salsifis_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:salsifis_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:salsifis_ef_global nutr:hasLifeCycleData nutr:salsifis_agriculture_ef, nutr:salsifis_transformation_ef, nutr:salsifis_emballage_ef, nutr:salsifis_transport_ef, nutr:salsifis_supermarche_ef, nutr:salsifis_consommation_ef .
@@ -1667,10 +1313,7 @@ nutr:topinambour a nutr:Food ;
   nutr:hasName "Topinambour"@fr ;
   nutr:hasCategory "pommes de terre et autres tubercules" ;
   nutr:hasEnvironmentalData nutr:topinambour_co2, nutr:topinambour_ef_global, nutr:topinambour_agriculture_ef, nutr:topinambour_transformation_ef, nutr:topinambour_emballage_ef, nutr:topinambour_transport_ef, nutr:topinambour_supermarche_ef, nutr:topinambour_consommation_ef ;
-  nutr:isInSeasonDuring nutr:topinambour_season .
-
-nutr:topinambour_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:11, nutr:12 .
 
 nutr:topinambour_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.49126650000000005"^^xsd:float ;
@@ -1684,64 +1327,46 @@ nutr:topinambour_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:topinambour_agriculture_ef a nutr:EnvironmentalData ;
+nutr:topinambour_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0384"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:topinambour_transformation_ef a nutr:EnvironmentalData ;
+nutr:topinambour_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000201"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:topinambour_emballage_ef a nutr:EnvironmentalData ;
+nutr:topinambour_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:topinambour_transport_ef a nutr:EnvironmentalData ;
+nutr:topinambour_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0131"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:topinambour_supermarche_ef a nutr:EnvironmentalData ;
+nutr:topinambour_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00288"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:topinambour_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:topinambour_consommation_ef a nutr:EnvironmentalData ;
+nutr:topinambour_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:topinambour_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:topinambour_ef_global nutr:hasLifeCycleData nutr:topinambour_agriculture_ef, nutr:topinambour_transformation_ef, nutr:topinambour_emballage_ef, nutr:topinambour_transport_ef, nutr:topinambour_supermarche_ef, nutr:topinambour_consommation_ef .
@@ -1750,10 +1375,7 @@ nutr:chataigne a nutr:Fruit ;
   nutr:hasName "Châtaigne"@fr ;
   nutr:hasCategory "fruits à coque et graines oléagineuses" ;
   nutr:hasEnvironmentalData nutr:chataigne_co2, nutr:chataigne_ef_global, nutr:chataigne_agriculture_ef, nutr:chataigne_transformation_ef, nutr:chataigne_emballage_ef, nutr:chataigne_transport_ef, nutr:chataigne_supermarche_ef, nutr:chataigne_consommation_ef ;
-  nutr:isInSeasonDuring nutr:chataigne_season .
-
-nutr:chataigne_season a nutr:Season ;
-  nutr:hasMonth "10"^^xsd:string , "11"^^xsd:string .
+  nutr:isInSeasonDuring nutr:10, nutr:11 .
 
 nutr:chataigne_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.943945"^^xsd:float ;
@@ -1767,64 +1389,46 @@ nutr:chataigne_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:chataigne_agriculture_ef a nutr:EnvironmentalData ;
+nutr:chataigne_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.272"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:chataigne_transformation_ef a nutr:EnvironmentalData ;
+nutr:chataigne_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000741"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:chataigne_emballage_ef a nutr:EnvironmentalData ;
+nutr:chataigne_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:chataigne_transport_ef a nutr:EnvironmentalData ;
+nutr:chataigne_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0133"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:chataigne_supermarche_ef a nutr:EnvironmentalData ;
+nutr:chataigne_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0073"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:chataigne_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:chataigne_consommation_ef a nutr:EnvironmentalData ;
+nutr:chataigne_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00146"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:chataigne_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:chataigne_ef_global nutr:hasLifeCycleData nutr:chataigne_agriculture_ef, nutr:chataigne_transformation_ef, nutr:chataigne_emballage_ef, nutr:chataigne_transport_ef, nutr:chataigne_supermarche_ef, nutr:chataigne_consommation_ef .
@@ -1833,10 +1437,7 @@ nutr:clementine a nutr:Fruit ;
   nutr:hasName "Clémentine"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:clementine_co2, nutr:clementine_ef_global, nutr:clementine_agriculture_ef, nutr:clementine_transformation_ef, nutr:clementine_emballage_ef, nutr:clementine_transport_ef, nutr:clementine_supermarche_ef, nutr:clementine_consommation_ef ;
-  nutr:isInSeasonDuring nutr:clementine_season .
-
-nutr:clementine_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:11, nutr:12 .
 
 nutr:clementine_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.3019120000000002"^^xsd:float ;
@@ -1850,64 +1451,46 @@ nutr:clementine_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:clementine_agriculture_ef a nutr:EnvironmentalData ;
+nutr:clementine_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.63"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:clementine_transformation_ef a nutr:EnvironmentalData ;
+nutr:clementine_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000338"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:clementine_emballage_ef a nutr:EnvironmentalData ;
+nutr:clementine_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:clementine_transport_ef a nutr:EnvironmentalData ;
+nutr:clementine_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0365"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:clementine_supermarche_ef a nutr:EnvironmentalData ;
+nutr:clementine_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00469"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:clementine_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:clementine_consommation_ef a nutr:EnvironmentalData ;
+nutr:clementine_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00878"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:clementine_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:clementine_ef_global nutr:hasLifeCycleData nutr:clementine_agriculture_ef, nutr:clementine_transformation_ef, nutr:clementine_emballage_ef, nutr:clementine_transport_ef, nutr:clementine_supermarche_ef, nutr:clementine_consommation_ef .
@@ -1916,10 +1499,7 @@ nutr:kiwi a nutr:Fruit ;
   nutr:hasName "Kiwi"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:kiwi_co2, nutr:kiwi_ef_global, nutr:kiwi_agriculture_ef, nutr:kiwi_transformation_ef, nutr:kiwi_emballage_ef, nutr:kiwi_transport_ef, nutr:kiwi_supermarche_ef, nutr:kiwi_consommation_ef ;
-  nutr:isInSeasonDuring nutr:kiwi_season .
-
-nutr:kiwi_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:11, nutr:12 .
 
 nutr:kiwi_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.0015"^^xsd:float ;
@@ -1933,64 +1513,46 @@ nutr:kiwi_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:kiwi_agriculture_ef a nutr:EnvironmentalData ;
+nutr:kiwi_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0806"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:kiwi_transformation_ef a nutr:EnvironmentalData ;
+nutr:kiwi_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00325"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:kiwi_emballage_ef a nutr:EnvironmentalData ;
+nutr:kiwi_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:kiwi_transport_ef a nutr:EnvironmentalData ;
+nutr:kiwi_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.038"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:kiwi_supermarche_ef a nutr:EnvironmentalData ;
+nutr:kiwi_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00106"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "1"^^xsd:float .
 
-nutr:kiwi_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:kiwi_consommation_ef a nutr:EnvironmentalData ;
+nutr:kiwi_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kiwi_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "1"^^xsd:float .
 
 nutr:kiwi_ef_global nutr:hasLifeCycleData nutr:kiwi_agriculture_ef, nutr:kiwi_transformation_ef, nutr:kiwi_emballage_ef, nutr:kiwi_transport_ef, nutr:kiwi_supermarche_ef, nutr:kiwi_consommation_ef .
@@ -1999,10 +1561,7 @@ nutr:mandarine a nutr:Fruit ;
   nutr:hasName "Mandarine"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:mandarine_co2, nutr:mandarine_ef_global, nutr:mandarine_agriculture_ef, nutr:mandarine_transformation_ef, nutr:mandarine_emballage_ef, nutr:mandarine_transport_ef, nutr:mandarine_supermarche_ef, nutr:mandarine_consommation_ef ;
-  nutr:isInSeasonDuring nutr:mandarine_season .
-
-nutr:mandarine_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:11, nutr:12 .
 
 nutr:mandarine_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.4684038"^^xsd:float ;
@@ -2016,64 +1575,46 @@ nutr:mandarine_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:mandarine_agriculture_ef a nutr:EnvironmentalData ;
+nutr:mandarine_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.114"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:mandarine_transformation_ef a nutr:EnvironmentalData ;
+nutr:mandarine_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000254"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:mandarine_emballage_ef a nutr:EnvironmentalData ;
+nutr:mandarine_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:mandarine_transport_ef a nutr:EnvironmentalData ;
+nutr:mandarine_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0274"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:mandarine_supermarche_ef a nutr:EnvironmentalData ;
+nutr:mandarine_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00352"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:mandarine_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:mandarine_consommation_ef a nutr:EnvironmentalData ;
+nutr:mandarine_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:mandarine_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:mandarine_ef_global nutr:hasLifeCycleData nutr:mandarine_agriculture_ef, nutr:mandarine_transformation_ef, nutr:mandarine_emballage_ef, nutr:mandarine_transport_ef, nutr:mandarine_supermarche_ef, nutr:mandarine_consommation_ef .
@@ -2082,10 +1623,7 @@ nutr:noisette a nutr:Fruit ;
   nutr:hasName "Noisette"@fr ;
   nutr:hasCategory "fruits à coque et graines oléagineuses" ;
   nutr:hasEnvironmentalData nutr:noisette_co2, nutr:noisette_ef_global, nutr:noisette_agriculture_ef, nutr:noisette_transformation_ef, nutr:noisette_emballage_ef, nutr:noisette_transport_ef, nutr:noisette_supermarche_ef, nutr:noisette_consommation_ef ;
-  nutr:isInSeasonDuring nutr:noisette_season .
-
-nutr:noisette_season a nutr:Season ;
-  nutr:hasMonth "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string .
+  nutr:isInSeasonDuring nutr:9, nutr:10, nutr:11 .
 
 nutr:noisette_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "4.8111999999999995"^^xsd:float ;
@@ -2099,64 +1637,46 @@ nutr:noisette_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:noisette_agriculture_ef a nutr:EnvironmentalData ;
+nutr:noisette_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.833"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:noisette_transformation_ef a nutr:EnvironmentalData ;
+nutr:noisette_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0125"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:noisette_emballage_ef a nutr:EnvironmentalData ;
+nutr:noisette_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:noisette_transport_ef a nutr:EnvironmentalData ;
+nutr:noisette_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0247"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:noisette_supermarche_ef a nutr:EnvironmentalData ;
+nutr:noisette_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00657"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:noisette_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:noisette_consommation_ef a nutr:EnvironmentalData ;
+nutr:noisette_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noisette_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:noisette_ef_global nutr:hasLifeCycleData nutr:noisette_agriculture_ef, nutr:noisette_transformation_ef, nutr:noisette_emballage_ef, nutr:noisette_transport_ef, nutr:noisette_supermarche_ef, nutr:noisette_consommation_ef .
@@ -2165,10 +1685,7 @@ nutr:poire a nutr:Fruit ;
   nutr:hasName "Poire"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:poire_co2, nutr:poire_ef_global, nutr:poire_agriculture_ef, nutr:poire_transformation_ef, nutr:poire_emballage_ef, nutr:poire_transport_ef, nutr:poire_supermarche_ef, nutr:poire_consommation_ef ;
-  nutr:isInSeasonDuring nutr:poire_season .
-
-nutr:poire_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:poire_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.387319"^^xsd:float ;
@@ -2182,64 +1699,46 @@ nutr:poire_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:poire_agriculture_ef a nutr:EnvironmentalData ;
+nutr:poire_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0259"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:poire_transformation_ef a nutr:EnvironmentalData ;
+nutr:poire_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00000574"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:poire_emballage_ef a nutr:EnvironmentalData ;
+nutr:poire_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:poire_transport_ef a nutr:EnvironmentalData ;
+nutr:poire_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0206"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:poire_supermarche_ef a nutr:EnvironmentalData ;
+nutr:poire_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00149"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:poire_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:poire_consommation_ef a nutr:EnvironmentalData ;
+nutr:poire_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:poire_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:poire_ef_global nutr:hasLifeCycleData nutr:poire_agriculture_ef, nutr:poire_transformation_ef, nutr:poire_emballage_ef, nutr:poire_transport_ef, nutr:poire_supermarche_ef, nutr:poire_consommation_ef .
@@ -2248,10 +1747,7 @@ nutr:brocoli a nutr:Vegetable ;
   nutr:hasName "Brocoli"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:brocoli_co2, nutr:brocoli_ef_global, nutr:brocoli_agriculture_ef, nutr:brocoli_transformation_ef, nutr:brocoli_emballage_ef, nutr:brocoli_transport_ef, nutr:brocoli_supermarche_ef, nutr:brocoli_consommation_ef ;
-  nutr:isInSeasonDuring nutr:brocoli_season .
-
-nutr:brocoli_season a nutr:Season ;
-  nutr:hasMonth "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string .
+  nutr:isInSeasonDuring nutr:9, nutr:10, nutr:11 .
 
 nutr:brocoli_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.950705"^^xsd:float ;
@@ -2265,64 +1761,46 @@ nutr:brocoli_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:brocoli_agriculture_ef a nutr:EnvironmentalData ;
+nutr:brocoli_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0616"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:brocoli_transformation_ef a nutr:EnvironmentalData ;
+nutr:brocoli_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000062"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:brocoli_emballage_ef a nutr:EnvironmentalData ;
+nutr:brocoli_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:brocoli_transport_ef a nutr:EnvironmentalData ;
+nutr:brocoli_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:brocoli_supermarche_ef a nutr:EnvironmentalData ;
+nutr:brocoli_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00706"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:brocoli_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:brocoli_consommation_ef a nutr:EnvironmentalData ;
+nutr:brocoli_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:brocoli_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:brocoli_ef_global nutr:hasLifeCycleData nutr:brocoli_agriculture_ef, nutr:brocoli_transformation_ef, nutr:brocoli_emballage_ef, nutr:brocoli_transport_ef, nutr:brocoli_supermarche_ef, nutr:brocoli_consommation_ef .
@@ -2331,10 +1809,7 @@ nutr:ananas a nutr:Fruit ;
   nutr:hasName "Ananas"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:ananas_co2, nutr:ananas_ef_global, nutr:ananas_agriculture_ef, nutr:ananas_transformation_ef, nutr:ananas_emballage_ef, nutr:ananas_transport_ef, nutr:ananas_supermarche_ef, nutr:ananas_consommation_ef ;
-  nutr:isInSeasonDuring nutr:ananas_season .
-
-nutr:ananas_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:ananas_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.3614345"^^xsd:float ;
@@ -2348,64 +1823,46 @@ nutr:ananas_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:ananas_agriculture_ef a nutr:EnvironmentalData ;
+nutr:ananas_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.107"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:ananas_transformation_ef a nutr:EnvironmentalData ;
+nutr:ananas_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000104"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:ananas_emballage_ef a nutr:EnvironmentalData ;
+nutr:ananas_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:ananas_transport_ef a nutr:EnvironmentalData ;
+nutr:ananas_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0581"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:ananas_supermarche_ef a nutr:EnvironmentalData ;
+nutr:ananas_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0027"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:ananas_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:ananas_consommation_ef a nutr:EnvironmentalData ;
+nutr:ananas_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:ananas_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:ananas_ef_global nutr:hasLifeCycleData nutr:ananas_agriculture_ef, nutr:ananas_transformation_ef, nutr:ananas_emballage_ef, nutr:ananas_transport_ef, nutr:ananas_supermarche_ef, nutr:ananas_consommation_ef .
@@ -2414,10 +1871,7 @@ nutr:banane a nutr:Fruit ;
   nutr:hasName "Banane"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:banane_co2, nutr:banane_ef_global, nutr:banane_agriculture_ef, nutr:banane_transformation_ef, nutr:banane_emballage_ef, nutr:banane_transport_ef, nutr:banane_supermarche_ef, nutr:banane_consommation_ef ;
-  nutr:isInSeasonDuring nutr:banane_season .
-
-nutr:banane_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:banane_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.908523"^^xsd:float ;
@@ -2431,64 +1885,46 @@ nutr:banane_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:banane_agriculture_ef a nutr:EnvironmentalData ;
+nutr:banane_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0664"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:banane_transformation_ef a nutr:EnvironmentalData ;
+nutr:banane_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000373"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:banane_emballage_ef a nutr:EnvironmentalData ;
+nutr:banane_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:banane_transport_ef a nutr:EnvironmentalData ;
+nutr:banane_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.038"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:banane_supermarche_ef a nutr:EnvironmentalData ;
+nutr:banane_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00482"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:banane_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:banane_consommation_ef a nutr:EnvironmentalData ;
+nutr:banane_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00564"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:banane_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:banane_ef_global nutr:hasLifeCycleData nutr:banane_agriculture_ef, nutr:banane_transformation_ef, nutr:banane_emballage_ef, nutr:banane_transport_ef, nutr:banane_supermarche_ef, nutr:banane_consommation_ef .
@@ -2497,10 +1933,7 @@ nutr:avocat a nutr:Vegetable ;
   nutr:hasName "Avocat"@fr ;
   nutr:hasCategory "légumes" ;
   nutr:hasEnvironmentalData nutr:avocat_co2, nutr:avocat_ef_global, nutr:avocat_agriculture_ef, nutr:avocat_transformation_ef, nutr:avocat_emballage_ef, nutr:avocat_transport_ef, nutr:avocat_supermarche_ef, nutr:avocat_consommation_ef ;
-  nutr:isInSeasonDuring nutr:avocat_season .
-
-nutr:avocat_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:avocat_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "1.5525229999999999"^^xsd:float ;
@@ -2514,64 +1947,46 @@ nutr:avocat_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:avocat_agriculture_ef a nutr:EnvironmentalData ;
+nutr:avocat_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.276"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:avocat_transformation_ef a nutr:EnvironmentalData ;
+nutr:avocat_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000373"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:avocat_emballage_ef a nutr:EnvironmentalData ;
+nutr:avocat_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:avocat_transport_ef a nutr:EnvironmentalData ;
+nutr:avocat_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0451"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:avocat_supermarche_ef a nutr:EnvironmentalData ;
+nutr:avocat_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00482"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "2"^^xsd:float .
 
-nutr:avocat_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:avocat_consommation_ef a nutr:EnvironmentalData ;
+nutr:avocat_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00564"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:avocat_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "2"^^xsd:float .
 
 nutr:avocat_ef_global nutr:hasLifeCycleData nutr:avocat_agriculture_ef, nutr:avocat_transformation_ef, nutr:avocat_emballage_ef, nutr:avocat_transport_ef, nutr:avocat_supermarche_ef, nutr:avocat_consommation_ef .
@@ -2580,10 +1995,7 @@ nutr:carambole a nutr:Fruit ;
   nutr:hasName "Carambole"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:carambole_co2, nutr:carambole_ef_global, nutr:carambole_agriculture_ef, nutr:carambole_transformation_ef, nutr:carambole_emballage_ef, nutr:carambole_transport_ef, nutr:carambole_supermarche_ef, nutr:carambole_consommation_ef ;
-  nutr:isInSeasonDuring nutr:carambole_season .
-
-nutr:carambole_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:11, nutr:12 .
 
 nutr:carambole_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.5535079999999999"^^xsd:float ;
@@ -2597,64 +2009,46 @@ nutr:carambole_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:carambole_agriculture_ef a nutr:EnvironmentalData ;
+nutr:carambole_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0368"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:carambole_transformation_ef a nutr:EnvironmentalData ;
+nutr:carambole_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000326"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:carambole_emballage_ef a nutr:EnvironmentalData ;
+nutr:carambole_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:carambole_transport_ef a nutr:EnvironmentalData ;
+nutr:carambole_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:carambole_supermarche_ef a nutr:EnvironmentalData ;
+nutr:carambole_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00422"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:carambole_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:carambole_consommation_ef a nutr:EnvironmentalData ;
+nutr:carambole_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:carambole_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:carambole_ef_global nutr:hasLifeCycleData nutr:carambole_agriculture_ef, nutr:carambole_transformation_ef, nutr:carambole_emballage_ef, nutr:carambole_transport_ef, nutr:carambole_supermarche_ef, nutr:carambole_consommation_ef .
@@ -2663,10 +2057,7 @@ nutr:datte a nutr:Fruit ;
   nutr:hasName "Datte"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:datte_co2, nutr:datte_ef_global, nutr:datte_agriculture_ef, nutr:datte_transformation_ef, nutr:datte_emballage_ef, nutr:datte_transport_ef, nutr:datte_supermarche_ef, nutr:datte_consommation_ef ;
-  nutr:isInSeasonDuring nutr:datte_season .
-
-nutr:datte_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:10, nutr:11, nutr:12 .
 
 nutr:datte_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "2.8927609999999997"^^xsd:float ;
@@ -2680,64 +2071,46 @@ nutr:datte_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:datte_agriculture_ef a nutr:EnvironmentalData ;
+nutr:datte_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.306"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:datte_transformation_ef a nutr:EnvironmentalData ;
+nutr:datte_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000486"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:datte_emballage_ef a nutr:EnvironmentalData ;
+nutr:datte_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0283"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:datte_transport_ef a nutr:EnvironmentalData ;
+nutr:datte_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0189"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:datte_supermarche_ef a nutr:EnvironmentalData ;
+nutr:datte_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00556"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:datte_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:datte_consommation_ef a nutr:EnvironmentalData ;
+nutr:datte_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:datte_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:datte_ef_global nutr:hasLifeCycleData nutr:datte_agriculture_ef, nutr:datte_transformation_ef, nutr:datte_emballage_ef, nutr:datte_transport_ef, nutr:datte_supermarche_ef, nutr:datte_consommation_ef .
@@ -2746,10 +2119,7 @@ nutr:fruit_de_la_passion a nutr:Fruit ;
   nutr:hasName "Fruit de la passion"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:fruit_de_la_passion_co2, nutr:fruit_de_la_passion_ef_global, nutr:fruit_de_la_passion_agriculture_ef, nutr:fruit_de_la_passion_transformation_ef, nutr:fruit_de_la_passion_emballage_ef, nutr:fruit_de_la_passion_transport_ef, nutr:fruit_de_la_passion_supermarche_ef, nutr:fruit_de_la_passion_consommation_ef ;
-  nutr:isInSeasonDuring nutr:fruit_de_la_passion_season .
-
-nutr:fruit_de_la_passion_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "3"^^xsd:string , "4"^^xsd:string , "5"^^xsd:string , "6"^^xsd:string , "7"^^xsd:string , "8"^^xsd:string , "9"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:3, nutr:4, nutr:5, nutr:6, nutr:7, nutr:8, nutr:9, nutr:10, nutr:11, nutr:12 .
 
 nutr:fruit_de_la_passion_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.937608"^^xsd:float ;
@@ -2763,64 +2133,46 @@ nutr:fruit_de_la_passion_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:fruit_de_la_passion_agriculture_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0827"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:fruit_de_la_passion_transformation_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0000326"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:fruit_de_la_passion_emballage_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:fruit_de_la_passion_transport_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:fruit_de_la_passion_supermarche_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00398"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:fruit_de_la_passion_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:fruit_de_la_passion_consommation_ef a nutr:EnvironmentalData ;
+nutr:fruit_de_la_passion_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:fruit_de_la_passion_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:fruit_de_la_passion_ef_global nutr:hasLifeCycleData nutr:fruit_de_la_passion_agriculture_ef, nutr:fruit_de_la_passion_transformation_ef, nutr:fruit_de_la_passion_emballage_ef, nutr:fruit_de_la_passion_transport_ef, nutr:fruit_de_la_passion_supermarche_ef, nutr:fruit_de_la_passion_consommation_ef .
@@ -2829,10 +2181,7 @@ nutr:grenade a nutr:Fruit ;
   nutr:hasName "Grenade"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:grenade_co2, nutr:grenade_ef_global, nutr:grenade_agriculture_ef, nutr:grenade_transformation_ef, nutr:grenade_emballage_ef, nutr:grenade_transport_ef, nutr:grenade_supermarche_ef, nutr:grenade_consommation_ef ;
-  nutr:isInSeasonDuring nutr:grenade_season .
-
-nutr:grenade_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:11, nutr:12 .
 
 nutr:grenade_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.4985215"^^xsd:float ;
@@ -2846,64 +2195,46 @@ nutr:grenade_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:grenade_agriculture_ef a nutr:EnvironmentalData ;
+nutr:grenade_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0219"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:grenade_transformation_ef a nutr:EnvironmentalData ;
+nutr:grenade_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00000652"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:grenade_emballage_ef a nutr:EnvironmentalData ;
+nutr:grenade_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:grenade_transport_ef a nutr:EnvironmentalData ;
+nutr:grenade_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0223"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:grenade_supermarche_ef a nutr:EnvironmentalData ;
+nutr:grenade_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00169"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:grenade_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:grenade_consommation_ef a nutr:EnvironmentalData ;
+nutr:grenade_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:grenade_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:grenade_ef_global nutr:hasLifeCycleData nutr:grenade_agriculture_ef, nutr:grenade_transformation_ef, nutr:grenade_emballage_ef, nutr:grenade_transport_ef, nutr:grenade_supermarche_ef, nutr:grenade_consommation_ef .
@@ -2912,10 +2243,7 @@ nutr:kaki a nutr:Fruit ;
   nutr:hasName "Kaki"@fr ;
   nutr:hasCategory "fruits" ;
   nutr:hasEnvironmentalData nutr:kaki_co2, nutr:kaki_ef_global, nutr:kaki_agriculture_ef, nutr:kaki_transformation_ef, nutr:kaki_emballage_ef, nutr:kaki_transport_ef, nutr:kaki_supermarche_ef, nutr:kaki_consommation_ef ;
-  nutr:isInSeasonDuring nutr:kaki_season .
-
-nutr:kaki_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "10"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:10, nutr:11, nutr:12 .
 
 nutr:kaki_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "0.9495215"^^xsd:float ;
@@ -2929,64 +2257,46 @@ nutr:kaki_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:kaki_agriculture_ef a nutr:EnvironmentalData ;
+nutr:kaki_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.07"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:kaki_transformation_ef a nutr:EnvironmentalData ;
+nutr:kaki_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00000652"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:kaki_emballage_ef a nutr:EnvironmentalData ;
+nutr:kaki_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:kaki_transport_ef a nutr:EnvironmentalData ;
+nutr:kaki_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0284"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:kaki_supermarche_ef a nutr:EnvironmentalData ;
+nutr:kaki_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00169"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "3"^^xsd:float .
 
-nutr:kaki_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:kaki_consommation_ef a nutr:EnvironmentalData ;
+nutr:kaki_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.00329"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:kaki_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "3"^^xsd:float .
 
 nutr:kaki_ef_global nutr:hasLifeCycleData nutr:kaki_agriculture_ef, nutr:kaki_transformation_ef, nutr:kaki_emballage_ef, nutr:kaki_transport_ef, nutr:kaki_supermarche_ef, nutr:kaki_consommation_ef .
@@ -2995,10 +2305,7 @@ nutr:noix_de_coco a nutr:Fruit ;
   nutr:hasName "Noix de coco"@fr ;
   nutr:hasCategory "fruits à coque et graines oléagineuses" ;
   nutr:hasEnvironmentalData nutr:noix_de_coco_co2, nutr:noix_de_coco_ef_global, nutr:noix_de_coco_agriculture_ef, nutr:noix_de_coco_transformation_ef, nutr:noix_de_coco_emballage_ef, nutr:noix_de_coco_transport_ef, nutr:noix_de_coco_supermarche_ef, nutr:noix_de_coco_consommation_ef ;
-  nutr:isInSeasonDuring nutr:noix_de_coco_season .
-
-nutr:noix_de_coco_season a nutr:Season ;
-  nutr:hasMonth "1"^^xsd:string , "2"^^xsd:string , "11"^^xsd:string , "12"^^xsd:string .
+  nutr:isInSeasonDuring nutr:1, nutr:2, nutr:11, nutr:12 .
 
 nutr:noix_de_coco_co2 a nutr:EnvironmentalData ;
   nutr:hasValue "2.4109410000000002"^^xsd:float ;
@@ -3012,64 +2319,46 @@ nutr:noix_de_coco_ef_global a nutr:EnvironmentalData ;
   nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_agriculture a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Agriculture"@fr .
-
-nutr:noix_de_coco_agriculture_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_agriculture_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.322"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Agriculture (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_agriculture ;
+  nutr:hasLifeCycleStage nutr:agriculture ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_transformation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transformation"@fr .
-
-nutr:noix_de_coco_transformation_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_transformation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.000133"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transformation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_transformation ;
+  nutr:hasLifeCycleStage nutr:transformation ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_emballage a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Emballage"@fr .
-
-nutr:noix_de_coco_emballage_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_emballage_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0244"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Emballage (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_emballage ;
+  nutr:hasLifeCycleStage nutr:emballage ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_transport a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Transport"@fr .
-
-nutr:noix_de_coco_transport_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_transport_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0513"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Transport (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_transport ;
+  nutr:hasLifeCycleStage nutr:transport ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_supermarche a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Supermarché et distribution"@fr .
-
-nutr:noix_de_coco_supermarche_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_supermarche_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0131"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Supermarché et distribution (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_supermarche ;
+  nutr:hasLifeCycleStage nutr:supermarche ;
   nutr:hasDQR "4"^^xsd:float .
 
-nutr:noix_de_coco_stage_consommation a nutr:LifeCycleStage ;
-  nutr:hasLifeCycleName "Consommation"@fr .
-
-nutr:noix_de_coco_consommation_ef a nutr:EnvironmentalData ;
+nutr:noix_de_coco_consommation_ef a nutr:LifeCycleEnvData ;
   nutr:hasValue "0.0132"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
   nutr:hasDescription "Score unique EF - Consommation (Agribalyse)"@fr ;
-  nutr:hasLifeCycleStage nutr:noix_de_coco_stage_consommation ;
+  nutr:hasLifeCycleStage nutr:consommation ;
   nutr:hasDQR "4"^^xsd:float .
 
 nutr:noix_de_coco_ef_global nutr:hasLifeCycleData nutr:noix_de_coco_agriculture_ef, nutr:noix_de_coco_transformation_ef, nutr:noix_de_coco_emballage_ef, nutr:noix_de_coco_transport_ef, nutr:noix_de_coco_supermarche_ef, nutr:noix_de_coco_consommation_ef .

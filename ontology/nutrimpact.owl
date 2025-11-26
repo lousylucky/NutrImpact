@@ -28,6 +28,7 @@
 
     <owl:Class rdf:ID="Month">
         <rdfs:label xml:lang="fr">Mois</rdfs:label>
+        <rdfs:comment xml:lang="fr">Représente un mois de l'année pour la saisonnalité des aliments</rdfs:comment>
     </owl:Class>
 
     <owl:Class rdf:ID="Data">
@@ -39,8 +40,10 @@
         <rdfs:label xml:lang="fr">Donnée Environnementale</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:ID="Season">
-        <rdfs:label xml:lang="fr">Saison</rdfs:label>
+    <owl:Class rdf:ID="LifeCycleEnvData">
+        <rdfs:subClassOf rdf:resource="#EnvironmentalData"/>
+        <rdfs:label xml:lang="fr">Donnée Environnementale de Cycle de Vie</rdfs:label>
+        <rdfs:comment xml:lang="fr">Données environnementales spécifiques à une étape du cycle de vie</rdfs:comment>
     </owl:Class>
 
     <owl:Class rdf:ID="LifeCycleStage">
@@ -80,9 +83,10 @@
         <rdfs:comment xml:lang="fr">Ce chiffre correspond au Data Quality Ratio (DQR), il indique le niveau de confiance que l'on peut avoir dans le score. Plus le DQR est proche de 1, plus la donnée est fiable ; plus la valeur se rapproche de 5, plus le score rend compte d'une incertitude importante. Une donnée avec un DQR >= 3 est considérée comme peu fiable.</rdfs:comment>
     </owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:ID="hasMonth">
-        <rdfs:domain rdf:resource="#Season"/>
+    <owl:DatatypeProperty rdf:ID="hasMonthName">
+        <rdfs:domain rdf:resource="#Month"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="fr">Nom du mois (jan, fev, mar, etc.)</rdfs:comment>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:ID="hasEnvironmentalData">
@@ -92,24 +96,21 @@
 
     <owl:ObjectProperty rdf:ID="isInSeasonDuring">
         <rdfs:domain rdf:resource="#Food"/>
-        <rdfs:range rdf:resource="#Season"/>
+        <rdfs:range rdf:resource="#Month"/>
+        <rdfs:comment xml:lang="fr">Indique pendant quels mois un aliment est de saison</rdfs:comment>
     </owl:ObjectProperty>
 
-    <!-- Propriété pour nommer les étapes -->
-    <owl:DatatypeProperty rdf:ID="hasLifeCycleName">
-        <rdfs:domain rdf:resource="#LifeCycleStage"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-
-    <!-- Propriété pour lier une donnée environnementale à une étape -->
+    <!-- Propriété pour lier une donnée environnementale de cycle de vie à une étape -->
     <owl:ObjectProperty rdf:ID="hasLifeCycleStage">
-        <rdfs:domain rdf:resource="#EnvironmentalData"/>
+        <rdfs:domain rdf:resource="#LifeCycleEnvData"/>
         <rdfs:range rdf:resource="#LifeCycleStage"/>
+        <rdfs:comment xml:lang="fr">Lie une donnée environnementale de cycle de vie à son étape</rdfs:comment>
     </owl:ObjectProperty>
 
     <!-- Propriété pour lier données globales aux données détaillées par étape -->
     <owl:ObjectProperty rdf:ID="hasLifeCycleData">
         <rdfs:domain rdf:resource="#EnvironmentalData"/>
-        <rdfs:range rdf:resource="#EnvironmentalData"/>
+        <rdfs:range rdf:resource="#LifeCycleEnvData"/>
+        <rdfs:comment xml:lang="fr">Lie une donnée environnementale globale à ses données détaillées par étape du cycle de vie</rdfs:comment>
     </owl:ObjectProperty>
 </rdf:RDF>
