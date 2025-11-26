@@ -43,6 +43,11 @@
         <rdfs:label xml:lang="fr">Saison</rdfs:label>
     </owl:Class>
 
+    <owl:Class rdf:ID="LifeCycleStage">
+        <rdfs:label xml:lang="fr">Étape du Cycle de Vie</rdfs:label>
+        <rdfs:comment xml:lang="fr">Représente une étape dans le cycle de vie d'un aliment</rdfs:comment>
+    </owl:Class>
+
     <!-- Propriétés -->
     <owl:DatatypeProperty rdf:ID="hasName">
         <rdfs:domain rdf:resource="#Food"/>
@@ -88,5 +93,23 @@
     <owl:ObjectProperty rdf:ID="isInSeasonDuring">
         <rdfs:domain rdf:resource="#Food"/>
         <rdfs:range rdf:resource="#Season"/>
+    </owl:ObjectProperty>
+
+    <!-- Propriété pour nommer les étapes -->
+    <owl:DatatypeProperty rdf:ID="hasLifeCycleName">
+        <rdfs:domain rdf:resource="#LifeCycleStage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- Propriété pour lier une donnée environnementale à une étape -->
+    <owl:ObjectProperty rdf:ID="hasLifeCycleStage">
+        <rdfs:domain rdf:resource="#EnvironmentalData"/>
+        <rdfs:range rdf:resource="#LifeCycleStage"/>
+    </owl:ObjectProperty>
+
+    <!-- Propriété pour lier données globales aux données détaillées par étape -->
+    <owl:ObjectProperty rdf:ID="hasLifeCycleData">
+        <rdfs:domain rdf:resource="#EnvironmentalData"/>
+        <rdfs:range rdf:resource="#EnvironmentalData"/>
     </owl:ObjectProperty>
 </rdf:RDF>
