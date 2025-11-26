@@ -1,5 +1,0 @@
-
-@prefix ex:   <http://example.org/food#> .
-@prefix agb:  <http://agribalyse.ademe.fr/id/> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-

@@ -4,8 +4,7 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:nutr="http://nutrimpact.org/ontologies/2025/v1/nutrimpact#"
-    xml:base="http://nutrimpact.org/ontologies/2025/v1/nutrimpact">
+    xmlns:nutr="nutrimpact.owl#">
 
     <owl:Ontology rdf:about="http://nutrimpact.org/ontologies/2025/v1/nutrimpact">
         <rdfs:label xml:lang="fr">Ontologie NutrImpact</rdfs:label>
@@ -38,11 +37,6 @@
     <owl:Class rdf:ID="EnvironmentalData">
         <rdfs:subClassOf rdf:resource="#Data"/>
         <rdfs:label xml:lang="fr">Donnée Environnementale</rdfs:label>
-    </owl:Class>
-
-    <owl:Class rdf:ID="CO2ImpactData">
-        <rdfs:subClassOf rdf:resource="#EnvironmentalData"/>
-        <rdfs:label xml:lang="fr">Donnée d'Impact CO2</rdfs:label>
     </owl:Class>
 
     <owl:Class rdf:ID="Season">
@@ -91,34 +85,8 @@
         <rdfs:range rdf:resource="#EnvironmentalData"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:ID="hasCO2ImpactData">
-        <rdfs:domain rdf:resource="#Food"/>
-        <rdfs:range rdf:resource="#CO2ImpactData"/>
-    </owl:ObjectProperty>
-
     <owl:ObjectProperty rdf:ID="isInSeasonDuring">
         <rdfs:domain rdf:resource="#Food"/>
         <rdfs:range rdf:resource="#Season"/>
     </owl:ObjectProperty>
-
-    <!-- Instances -->
-    <nutr:apple rdf:type="nutr:Fruit">
-        <nutr:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pomme</nutr:hasName>
-        <nutr:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fruit</nutr:hasCategory>
-        <nutr:isInSeasonDuring rdf:resource="#autumn"/>
-        <nutr:hasCO2ImpactData rdf:resource="#apple_co2_impact"/>
-    </nutr:apple>
-
-    <nutr:autumn rdf:type="nutr:Season">
-        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Septembre</nutr:hasMonth>
-        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Octobre</nutr:hasMonth>
-        <nutr:hasMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Novembre</nutr:hasMonth>
-    </nutr:autumn>
-
-    <nutr:apple_co2_impact rdf:type="nutr:CO2ImpactData">
-        <nutr:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.408</nutr:hasValue>
-        <nutr:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kg CO2 eq/kg</nutr:hasUnit>
-        <nutr:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impact CO2 de la production de pommes</nutr:hasDescription>
-        <nutr:hasDQR rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.01</nutr:hasDQR>
-    </nutr:apple_co2_impact>
 </rdf:RDF>
