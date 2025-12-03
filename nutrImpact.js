@@ -157,7 +157,15 @@ async function buildMergedDataset() {
 function saveTurtle(merged) {
   let ttl = `
 @prefix nutr: <http://nutrimpact.org/ontologies/2025/v1/nutrimpact#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Relations de sous-classe explicites
+nutr:Fruit rdfs:subClassOf nutr:Food .
+nutr:Vegetable rdfs:subClassOf nutr:Food .
+nutr:EnvironmentalData rdfs:subClassOf nutr:Data .
+nutr:LifeCycleEnvData rdfs:subClassOf nutr:EnvironmentalData .
+nutr:LifeCycleEnvData rdfs:subClassOf nutr:Data .
 
 `;
 
