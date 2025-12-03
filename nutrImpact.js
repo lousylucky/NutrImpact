@@ -167,6 +167,15 @@ nutr:EnvironmentalData rdfs:subClassOf nutr:Data .
 nutr:LifeCycleEnvData rdfs:subClassOf nutr:EnvironmentalData .
 nutr:LifeCycleEnvData rdfs:subClassOf nutr:Data .
 
+# Types de données environnementales
+nutr:ImpactCO2Type a nutr:DataType ;
+  rdfs:label "Impact CO2"@fr ;
+  nutr:hasDescription "ECV (ImpactCO2) – empreinte carbone par kg de produit"@fr .
+
+nutr:EnvironmentalFootprintType a nutr:DataType ;
+  rdfs:label "Empreinte Environnementale"@fr ;
+  nutr:hasDescription "Score unique EF - Empreinte environnementale (Agribalyse)"@fr .
+
 `;
 
   const slugify = (str) =>
@@ -385,7 +394,7 @@ nutr:${foodId} a nutr:${foodClass} ;
 nutr:${co2DataId} a nutr:EnvironmentalData ;
   nutr:hasValue "${co2Val}"^^xsd:float ;
   nutr:hasUnit "kg CO2e/kg" ;
-  nutr:hasDescription "ECV (ImpactCO2) – empreinte carbone par kg de produit"@fr`;
+  nutr:hasDataType nutr:ImpactCO2Type`;
       if (Number.isFinite(dqr)) {
         ttl += ` ;
   nutr:hasDQR "${dqr}"^^xsd:float`;
@@ -399,7 +408,7 @@ nutr:${co2DataId} a nutr:EnvironmentalData ;
 nutr:${efGlobalId} a nutr:EnvironmentalData ;
   nutr:hasValue "${efGlobalVal}"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
-  nutr:hasDescription "Score unique EF - Global (Agribalyse)"@fr`;
+  nutr:hasDataType nutr:EnvironmentalFootprintType`;
       if (Number.isFinite(dqr)) {
         ttl += ` ;
   nutr:hasDQR "${dqr}"^^xsd:float`;
@@ -416,15 +425,12 @@ nutr:${efGlobalId} a nutr:EnvironmentalData ;
       if (!Number.isFinite(val)) continue;
 
       const stageDataId = `${foodId}_${stageMapping.stage}_ef`;
-      const stageLabel = lifeCycleStages.find(s => s.short === stageMapping.stage).labelFr;
 
       ttl += `
 nutr:${stageDataId} a nutr:LifeCycleEnvData ;
   nutr:hasValue "${val}"^^xsd:float ;
   nutr:hasUnit "mPt/kg de produit" ;
-  nutr:hasDescription "Score unique EF - ${escapeLiteral(
-    stageLabel
-  )} (Agribalyse)"@fr ;
+  nutr:hasDataType nutr:EnvironmentalFootprintType ;
   nutr:hasLifeCycleStage nutr:${stageMapping.stage}`;
       if (Number.isFinite(dqr)) {
         ttl += ` ;
