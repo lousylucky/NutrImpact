@@ -184,26 +184,67 @@ function saveTurtle(merged) {
 
   // Définir les mois globaux
   const months = [
-    { short: "jan", labelFr: "Janvier" },
-    { short: "fev", labelFr: "Février" },
-    { short: "mar", labelFr: "Mars" },
-    { short: "avr", labelFr: "Avril" },
-    { short: "mai", labelFr: "Mai" },
-    { short: "jun", labelFr: "Juin" },
-    { short: "jul", labelFr: "Juillet" },
-    { short: "aou", labelFr: "Août" },
-    { short: "sep", labelFr: "Septembre" },
-    { short: "oct", labelFr: "Octobre" },
-    { short: "nov", labelFr: "Novembre" },
-    { short: "dec", labelFr: "Décembre" }
+    { short: "jan", labelFr: "Janvier", number: 1 },
+    { short: "fev", labelFr: "Février", number: 2 },
+    { short: "mar", labelFr: "Mars", number: 3 },
+    { short: "avr", labelFr: "Avril", number: 4 },
+    { short: "mai", labelFr: "Mai", number: 5 },
+    { short: "jun", labelFr: "Juin", number: 6 },
+    { short: "jul", labelFr: "Juillet", number: 7 },
+    { short: "aou", labelFr: "Août", number: 8 },
+    { short: "sep", labelFr: "Septembre", number: 9 },
+    { short: "oct", labelFr: "Octobre", number: 10 },
+    { short: "nov", labelFr: "Novembre", number: 11 },
+    { short: "dec", labelFr: "Décembre", number: 12 }
   ];
+
+  // Fonction pour mapper les noms de mois de l'API aux instances Month
+  const mapMonthToInstance = (monthName) => {
+    // Si c'est un nombre, le convertir
+    if (typeof monthName === 'number' || (!isNaN(monthName) && monthName !== '')) {
+      const monthNum = parseInt(monthName);
+      if (monthNum >= 1 && monthNum <= 12) {
+        const monthObj = months.find(m => m.number === monthNum);
+        return monthObj ? monthObj.short : null;
+      }
+      return null;
+    }
+    
+    const normalized = String(monthName).toLowerCase().trim();
+    
+    // Vérifier si c'est déjà un nom court valide
+    const validShortNames = months.map(m => m.short);
+    if (validShortNames.includes(normalized)) {
+      return normalized;
+    }
+    
+    // Mapping des variantes possibles vers nos instances Month
+    const monthMapping = {
+      // Noms complets français
+      'janvier': 'jan',
+      'février': 'fev', 'fevrier': 'fev',
+      'mars': 'mar',
+      'avril': 'avr',
+      'mai': 'mai',
+      'juin': 'jun',
+      'juillet': 'jul',
+      'août': 'aou', 'aout': 'aou',
+      'septembre': 'sep',
+      'octobre': 'oct',
+      'novembre': 'nov',
+      'décembre': 'dec', 'decembre': 'dec'
+    };
+
+    return monthMapping[normalized] || null;
+  };
 
   // Créer les instances Month globales une seule fois
   for (const month of months) {
     ttl += `
 nutr:${month.short} a nutr:Month ;
-  nutr:hasMonthName "${month.short}"^^xsd:string ;
-  rdfs:label "${escapeLiteral(month.labelFr)}"@fr .
+  nutr:hasMonthNumber "${month.number}"^^xsd:int ;
+  nutr:hasMonthFullName "${escapeLiteral(month.labelFr)}"^^xsd:string ;
+  rdfs:label "${month.short}"^^xsd:string .
 `;
   }
 
@@ -276,7 +317,7 @@ nutr:${stage.short} a nutr:LifeCycleStage ;
       envDataIds.push(stageDataId);
     }
 
-    // sezonowość z Impact CO2 - utiliser les instances Month
+    // sezonowość z Impact CO2 - mapper vers les vraies instances Month
     let monthsData = [];
     if (Array.isArray(item.months)) {
       monthsData = item.months;
@@ -286,11 +327,25 @@ nutr:${stage.short} a nutr:LifeCycleStage ;
         .filter(([, v]) => v)
         .map(([k]) => k);
     }
-    const hasSeason = monthsData.length > 0;
+    
+    // Mapper les noms de mois vers les instances Month valides et dédupliquer
+    const validMonthInstances = [...new Set(
+      monthsData
+        .map(mapMonthToInstance)
+        .filter(m => m !== null)
+    )]; // Utiliser Set pour éliminer les doublons
+    
+    const hasSeason = validMonthInstances.length > 0;
 
-    const monthInstances = monthsData
-      .map((m) => `nutr:${String(m).toLowerCase()}`)
+    const monthInstances = validMonthInstances
+      .map((m) => `nutr:${m}`)
       .join(", ");
+
+    // Log des mois non reconnus pour debug
+    const unrecognizedMonths = monthsData.filter(m => mapMonthToInstance(m) === null);
+    if (unrecognizedMonths.length > 0) {
+      console.warn(`Mois non reconnus pour ${item.label_fr}:`, unrecognizedMonths);
+    }
 
     // --- instancja Food/Fruit/Vegetable ---
     ttl += `
